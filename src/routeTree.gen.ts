@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as InterviewPrepRouteImport } from './routes/interview-prep'
+import { Route as LinkedinCoachRouteImport } from './routes/linkedin-coach'
+import { Route as ResumeAnalyzerRouteImport } from './routes/resume-analyzer'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
+import { Route as ApiInterviewGenerateRouteImport } from './routes/api/interview.generate'
+import { Route as ApiLinkedinAnalyzeRouteImport } from './routes/api/linkedin.analyze'
+import { Route as ApiResumeAnalyzeRouteImport } from './routes/api/resume.analyze'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InterviewPrepRoute = InterviewPrepRouteImport.update({
+  id: '/interview-prep',
+  path: '/interview-prep',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LinkedinCoachRoute = LinkedinCoachRouteImport.update({
+  id: '/linkedin-coach',
+  path: '/linkedin-coach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResumeAnalyzerRoute = ResumeAnalyzerRouteImport.update({
+  id: '/resume-analyzer',
+  path: '/resume-analyzer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiInterviewGenerateRoute = ApiInterviewGenerateRouteImport.update({
+  id: '/api/interview/generate',
+  path: '/api/interview/generate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiLinkedinAnalyzeRoute = ApiLinkedinAnalyzeRouteImport.update({
+  id: '/api/linkedin/analyze',
+  path: '/api/linkedin/analyze',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiResumeAnalyzeRoute = ApiResumeAnalyzeRouteImport.update({
+  id: '/api/resume/analyze',
+  path: '/api/resume/analyze',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/dashboard': typeof DashboardRoute
+  '/interview-prep': typeof InterviewPrepRoute
+  '/linkedin-coach': typeof LinkedinCoachRoute
+  '/resume-analyzer': typeof ResumeAnalyzerRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/interview/generate': typeof ApiInterviewGenerateRoute
+  '/api/linkedin/analyze': typeof ApiLinkedinAnalyzeRoute
+  '/api/resume/analyze': typeof ApiResumeAnalyzeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/dashboard': typeof DashboardRoute
+  '/interview-prep': typeof InterviewPrepRoute
+  '/linkedin-coach': typeof LinkedinCoachRoute
+  '/resume-analyzer': typeof ResumeAnalyzerRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/interview/generate': typeof ApiInterviewGenerateRoute
+  '/api/linkedin/analyze': typeof ApiLinkedinAnalyzeRoute
+  '/api/resume/analyze': typeof ApiResumeAnalyzeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/dashboard': typeof DashboardRoute
+  '/interview-prep': typeof InterviewPrepRoute
+  '/linkedin-coach': typeof LinkedinCoachRoute
+  '/resume-analyzer': typeof ResumeAnalyzerRoute
+  '/api/health': typeof ApiHealthRoute
+  '/api/interview/generate': typeof ApiInterviewGenerateRoute
+  '/api/linkedin/analyze': typeof ApiLinkedinAnalyzeRoute
+  '/api/resume/analyze': typeof ApiResumeAnalyzeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/dashboard'
+    | '/interview-prep'
+    | '/linkedin-coach'
+    | '/resume-analyzer'
+    | '/api/health'
+    | '/api/interview/generate'
+    | '/api/linkedin/analyze'
+    | '/api/resume/analyze'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/dashboard'
+    | '/interview-prep'
+    | '/linkedin-coach'
+    | '/resume-analyzer'
+    | '/api/health'
+    | '/api/interview/generate'
+    | '/api/linkedin/analyze'
+    | '/api/resume/analyze'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/dashboard'
+    | '/interview-prep'
+    | '/linkedin-coach'
+    | '/resume-analyzer'
+    | '/api/health'
+    | '/api/interview/generate'
+    | '/api/linkedin/analyze'
+    | '/api/resume/analyze'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  DashboardRoute: typeof DashboardRoute
+  InterviewPrepRoute: typeof InterviewPrepRoute
+  LinkedinCoachRoute: typeof LinkedinCoachRoute
+  ResumeAnalyzerRoute: typeof ResumeAnalyzerRoute
+  ApiHealthRoute: typeof ApiHealthRoute
+  ApiInterviewGenerateRoute: typeof ApiInterviewGenerateRoute
+  ApiLinkedinAnalyzeRoute: typeof ApiLinkedinAnalyzeRoute
+  ApiResumeAnalyzeRoute: typeof ApiResumeAnalyzeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/interview-prep': {
+      id: '/interview-prep'
+      path: '/interview-prep'
+      fullPath: '/interview-prep'
+      preLoaderRoute: typeof InterviewPrepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/linkedin-coach': {
+      id: '/linkedin-coach'
+      path: '/linkedin-coach'
+      fullPath: '/linkedin-coach'
+      preLoaderRoute: typeof LinkedinCoachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resume-analyzer': {
+      id: '/resume-analyzer'
+      path: '/resume-analyzer'
+      fullPath: '/resume-analyzer'
+      preLoaderRoute: typeof ResumeAnalyzerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/interview/generate': {
+      id: '/api/interview/generate'
+      path: '/api/interview/generate'
+      fullPath: '/api/interview/generate'
+      preLoaderRoute: typeof ApiInterviewGenerateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/linkedin/analyze': {
+      id: '/api/linkedin/analyze'
+      path: '/api/linkedin/analyze'
+      fullPath: '/api/linkedin/analyze'
+      preLoaderRoute: typeof ApiLinkedinAnalyzeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/resume/analyze': {
+      id: '/api/resume/analyze'
+      path: '/api/resume/analyze'
+      fullPath: '/api/resume/analyze'
+      preLoaderRoute: typeof ApiResumeAnalyzeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  DashboardRoute: DashboardRoute,
+  InterviewPrepRoute: InterviewPrepRoute,
+  LinkedinCoachRoute: LinkedinCoachRoute,
+  ResumeAnalyzerRoute: ResumeAnalyzerRoute,
+  ApiHealthRoute: ApiHealthRoute,
+  ApiInterviewGenerateRoute: ApiInterviewGenerateRoute,
+  ApiLinkedinAnalyzeRoute: ApiLinkedinAnalyzeRoute,
+  ApiResumeAnalyzeRoute: ApiResumeAnalyzeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
