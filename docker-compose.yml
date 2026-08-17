@@ -1,0 +1,28 @@
+# Local containerized run of CareerCraft AI.
+# Provide secrets in a local .env file (never committed) — see .env.example.
+services:
+  careercraft:
+    build:
+      context: .
+      args:
+        VITE_API_BASE_URL: "" # empty = same-origin API calls
+    image: careercraft-ai:latest
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      LOVABLE_API_KEY: ${LOVABLE_API_KEY:?LOVABLE_API_KEY must be set}
+      CORS_ALLOW_ORIGIN: ${CORS_ALLOW_ORIGIN:-}
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "bun",
+          "-e",
+          "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
