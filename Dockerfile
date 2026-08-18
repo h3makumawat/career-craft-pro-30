@@ -13,6 +13,9 @@ COPY . .
 # VITE_API_BASE_URL is optional: empty means "same origin" (recommended).
 ARG VITE_API_BASE_URL=""
 ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+# Build a self-hosted Node server bundle (.output/server/index.mjs).
+# Without this the build targets an edge/worker runtime and .output/ is not produced.
+ENV NITRO_PRESET=node_server
 RUN bun run build
 
 FROM oven/bun:1-slim AS runtime
