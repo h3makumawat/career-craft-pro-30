@@ -10,9 +10,13 @@ That means one container, one origin, no CORS configuration in the default setup
 
 ```bash
 bun install
-bun run build            # produces .output/
-bun run .output/server/index.mjs   # listens on $PORT (default 3000)
+NITRO_PRESET=node_server bun run build   # produces .output/ (self-hosted Node server)
+bun run .output/server/index.mjs         # listens on $PORT (default 3000)
 ```
+
+`NITRO_PRESET=node_server` is required for self-hosting (Docker/AWS): it is what makes the build emit
+`.output/server/index.mjs`. Without it the build targets an edge/worker runtime and emits `dist/`.
+
 
 ## Container
 

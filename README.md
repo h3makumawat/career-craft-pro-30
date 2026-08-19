@@ -147,7 +147,7 @@ bun run dev          # http://localhost:8080 — serves the UI and the /api rout
 ## 10. Running a production build
 
 ```bash
-bun run build
+NITRO_PRESET=node_server bun run build   # self-hosted Node server output in .output/
 bun run .output/server/index.mjs   # honours PORT
 ```
 
