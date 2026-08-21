@@ -1,0 +1,28 @@
+version: 1.0
+runtime: nodejs22
+build:
+  commands:
+    build:
+      # devDependencies (vite, nitro) are required at build time.
+      - npm install --include=dev
+      # node_server preset is what emits .output/server/index.mjs.
+      # Without it the build targets an edge/worker runtime and only emits dist/.
+      - NITRO_PRESET=node_server npm run build
+  env:
+    # Empty = frontend calls the API on its own origin (recommended).
+    - name: VITE_API_BASE_URL
+      value: ""
+run:
+  runtime-version: 22
+  command: node .output/server/index.mjs
+  network:
+    port: 8080
+  env:
+    - name: NODE_ENV
+      value: production
+    - name: PORT
+      value: "8080"
+  secrets:
+    # Create the secret in AWS Secrets Manager / SSM and paste its ARN here.
+    - name: LOVABLE_API_KEY
+      value-from: "arn:aws:secretsmanager:REGION:ACCOUNT_ID:secret:careercraft/LOVABLE_API_KEY"
